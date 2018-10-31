@@ -1,5 +1,7 @@
 # web_widget_many2many_binary_thumbnail
 
+Demo: https://i.imgur.com/EdtouGl.gifv
+
 Example usage:
 
 - Install module `web_widget_many2many_binary_thumbnail`
