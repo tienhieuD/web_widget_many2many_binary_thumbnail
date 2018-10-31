@@ -1,0 +1,27 @@
+<templates>
+    <div t-name="FieldBinaryFileUploader.thumbnails" class="oe_attachments">
+        <div t-foreach="widget.value.data" t-as="file" class="oe_attachment">
+            <t t-if="!file.data.upload">
+                <div style="font-family: monospace;font-size: 12px;">
+                    <a t-if="widget.mode !== 'readonly'" href="#" class="fa fa-times pull-right oe_delete"
+                       title="Delete this file" t-att-data-id="file.data.id"/>
+                    <t t-raw="(file.data.name || file.data.filename).replace(/^(.{8}).+/, '$1…')"/>
+                </div>
+                <a class="o_image" target="_blank"
+                   t-att-href="widget.metadata[file.id] ? widget.metadata[file.id].url : false"
+                   t-att-title="file.data.name"
+                   t-att-data-mimetype="file.data.mimetype"
+                   t-attf-data-src="/web/image/#{file.data.id}/100x80"/>
+            </t>
+        </div>
+        <div t-foreach="widget.uploadingFiles" t-as="file" class="oe_attachment">
+            <div>Uploading...</div>
+            <a t-att-title="file.name" t-att-name="file.name" class="o_image">
+                <i class="fa fa-spinner fa-spin fa-5x fa-fw"></i>
+            </a>
+            <div>
+                <t t-esc="file.name"/>
+            </div>
+        </div>
+    </div>
+</templates>
